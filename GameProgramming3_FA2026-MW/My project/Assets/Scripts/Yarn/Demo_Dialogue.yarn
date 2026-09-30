@@ -6,10 +6,12 @@ This is an example of a Yarn Spinner script. Write your dialogue here!
 title: Start
 ---
 <<declare $agreed_to_help = false>> 
+<<cam_move NPC_Cam_Rig "npc">>
 Dia: Hello there! Nice to see you. I hope you're enjoying this adventure!
 <<if $agreed_to_help == false>>
 <<declare $bunniesLost = 4>>
 Dia: Have you seen any bunnies by any chance? {$bunniesLost} of mine ran out.
+    <<cam_move NPC_Cam_Rig "pc">>
     ->Yes!
         Dia: That's great, did you catch any of them?
             ->Yes I found one!
@@ -19,17 +21,21 @@ Dia: Have you seen any bunnies by any chance? {$bunniesLost} of mine ran out.
                     ->Okay I will!
                         Dia: Thank you so much!
                         <<set $agreed_to_help = true>>
+                        <<cam_move NPC_Cam_Rig "return">>
             ->No.
                 Dia: They are quite fast! If you happen to spot one please try to catch it and bring it back!
                     ->Okay I will!
                         <<set $agreed_to_help to true>>
+                        <<cam_move NPC_Cam_Rig "return">>
     ->No.
         Dia: Oh no. Where could they have gone?
         Dia: Could you help me look? I think they ran outside when their gate broke.
             ->Yes!
                 Thank you so much. 
                 <<set $agreed_to_help to true>>
+                <<cam_move NPC_Cam_Rig "return">>
             ->Sorry, I'm busy.
+            <<cam_move NPC_Cam_Rig "return">>
 <<else>>
 <<jump agreedHelp>>
 Dia: Have you seen any of my bunnies?
@@ -38,8 +44,10 @@ Dia: Have you seen any of my bunnies?
             ->Yes.
             <<set $bunniesLost to $bunniesLost - 1>>
                 Dia: Thank you! There is {$bunniesLost} left.
+                <<cam_move NPC_Cam_Rig "return">>
     ->Sorry, I'm still looking.
         Dia: No worries. Please let me know if you see them. They might be outside playing in the grass.
+        <<cam_move NPC_Cam_Rig "return">>
 <<endif>>
 ===
 title: agreedHelp
