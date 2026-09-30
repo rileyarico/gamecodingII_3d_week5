@@ -157,6 +157,14 @@ public class GameController : MonoBehaviour
         }
     }
 
+    //this method is being called by the NPC_Cam_Control script
+    //calling it from there b/c that class has a standardized Transform variable to pass into this method
+    public void moveForDialogue(Transform movePos)
+    {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = movePos.position;
+    }
+
 }
 
 [System.Serializable]

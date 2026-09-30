@@ -3,6 +3,16 @@ position: 308,34
 ---
 This is an example of a Yarn Spinner script. Write your dialogue here!
 ===
+title: loadPhase
+---
+<<declare $dialoguePhase = "">>
+<<dialoguePhaseSet "NPC">> 
+<<if $dialoguePhase == "start">>
+<<jump Start>>
+<<else>>
+Dia: I don't know what to do. This is an error debug message. fix ur shit loser
+<<endif>>
+===
 title: Start
 ---
 <<declare $agreed_to_help = false>> 
@@ -57,14 +67,17 @@ Dia: Thank you so much for finding my bunnies! I'm so relieved they made it back
     ->No problem
     ->How are they doing?
         Dia: They're great!
+        <<cam_move NPC_Cam_Rig "return">>
 ===
 title: allBunniesFound
 position: -363,143
 ---
 Dia: Thank you so much for finding my bunnies! I'm so relieved they made it back!
     ->No problem
+    <<cam_move NPC_Cam_Rig "return">>
     ->How are they doing?
         Dia: They're great!
+        <<cam_move NPC_Cam_Rig "return">>
 ===
 title: background
 position: -363,143
@@ -74,5 +87,6 @@ Dia: I have 5 bunnies: Jack, Harry, Pumpkin, Peanut and Rascal.
     ->Which one didn't run away?
         Dia: I don't think Peanut heard the gate break, and she can't see very well.
             ->Aww
+            <<cam_move NPC_Cam_Rig "return">>
 
 ===

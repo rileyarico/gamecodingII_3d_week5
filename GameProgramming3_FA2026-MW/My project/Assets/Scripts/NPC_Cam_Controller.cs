@@ -4,13 +4,15 @@ using Yarn.Unity;
 
 public class NPC_Cam_Controller : MonoBehaviour
 {
-    //switch from TPC camera to NPC_cCam (modifying 'priority' attribute)
-    //create methods for switching the NPC_cCam transform.position
-    //get switching transform position methods to talk to yarnSpinner
+    //Done! switch from TPC camera to NPC_cCam (modifying 'priority' attribute)
+    //Done! create methods for switching the NPC_cCam transform.position
+    //Done! get switching transform position methods to talk to yarnSpinner
+
     //reposition the TPC 'into frame'(so that we don't look weird)
 
     public Transform npc_loc;
     public Transform pc_loc;
+    public Transform pc_move_loc;
     public CinemachineCamera npc_cCam;
     public int priorityValue;
 
@@ -32,5 +34,10 @@ public class NPC_Cam_Controller : MonoBehaviour
         {
             npc_cCam.Priority = 0;
         }
+    }
+
+    public void movePlayer()
+    {
+        GameController.instance.moveForDialogue(pc_move_loc);
     }
 }
